@@ -13,6 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/contact', 'PostsController@contact');
+
+Route::get('/post/{id}/{name}', 'PostsController@show_post');
