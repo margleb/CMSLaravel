@@ -16,3 +16,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+//http://cmslaravel/public/post/{id}
+Route::get('/post/{id}', 'PostsController@index');
+
+// Добавляет ресурсы route:list
+Route::resource('/posts', 'PostsController');
