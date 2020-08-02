@@ -13,6 +13,28 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+// http:/cmslaravel/public/example
+Route::get('/example', function () {;
+    // return view('welcome');
+    return 'Hello, Gleb';
 });
+
+// Страницы "О нас" и "Контакты"
+Route::get('/about', function() {
+   return 'Страница о нас и контакты';
+});
+
+Route::get('/contacts', function() {
+   return 'Страница контакты!';
+});
+
+// Пост с id
+Route::get('/post/{id}/{name}', function($id, $name) {
+   return "This is post number " . $id . " " . $name;
+});
+
+// C указанием URL
+Route::get('/admin/posts/example', array('as' => 'admin.home', function() {
+    $url = route('admin.home'); // сохраняем url;
+    return "This url is " . $url;
+}));
