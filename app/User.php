@@ -36,4 +36,26 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    // cвязь один к одному
+    public function post() {
+        return $this->hasOne('App\Post');
+    }
+
+    // cвязь один к многим
+    public function posts() {
+        return $this->hasMany('App\Post');
+    }
+
+    // связь многие к многим
+    public function roles() {
+        // widthPivot повзволяет получить из промежуточной таблицы дополнительное значение created_at
+        return $this->belongsToMany('App\Role')->withPivot('created_at');
+    }
+
+    // полиморфная связь
+    public function photos() {
+        return $this->morphMany('App\Photo', 'imageable');
+    }
+
 }
